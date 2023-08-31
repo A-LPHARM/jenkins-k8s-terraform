@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: build-pod
+spec:
+  containers:  # list of containers that you want present for your build, you can define a default container in the Jenkinsfile
+    - name: custom-agent
+      image: josiokoko/onyxquity-inbound-agent
+      command: ["tail", "-f", "/dev/null"]
+      tty: true
+      volumeMounts:
+        - name: dind-certs
+          mountPath: /certs/client
+      env:
+        - name: DOCKER_CERT_PATH
+          value: /certs/client
+        - name: DOCKER_TLS_VERIFY
+          value: 1
+        - name: DOCKER_HOST
+          value: tcp://localhost:2376
+      resources: {}
+    - name: dind
+      image: docker:dind
+      securityContext:
+        privileged: true
+      env:
+        - name: DOCKER_TLS_CERTDIR
+          value: /certs
+      resources: {}
+      volumeMounts:
+        - name: dind-storage
+          mountPath: /var/lib/docker
+        - name: dind-certs
+          mountPath: /certs/client
+  volumes:
+    - name: dind-storage
+      emptyDir: {}
+    - name: dind-certs
+      emptyDir: {}
+      
