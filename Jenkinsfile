@@ -8,17 +8,17 @@ pipeline {
         }
         stage("AWS ECR Authentication") {
             steps{
-                sh "Authenticating to AWS..."
+                sh "echo Authenticating to AWS..."
             }
         }
         stage("Build & Deploy Image") {
             steps{
-                sh "Building and Deploying Image..."
+                sh "echo Building and Deploying Image..."
             }
         }
         stage("k8s Deployment") {
             steps {
-                sh "Deploying to Kubernetes..."
+                sh "echo Deploying to Kubernetes..."
             }
         }
     }
