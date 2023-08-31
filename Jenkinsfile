@@ -18,7 +18,7 @@ pipeline {
         }
         stage("k8s Deployment") {
             steps {
-                sh "echo Deploying to Kubernetes....."
+                sh "echo Deploying to Kubernetes..."
             }
         }
     }
