@@ -24,7 +24,7 @@ pipeline {
 		stage("Create s3 Bucket"){
 			steps{
 				script{
-					createS3Bucket('raycoy-aws-deploy-jenkins')
+					createS3Bucket('henry-aws-deploy-jenkins')
 				}
 			}
 		}
@@ -32,7 +32,7 @@ pipeline {
 		stage("Create DynamoDB") {
 			steps{
 				script{
-					createDynamoDB('raycoy-aws-deploy-jenkins-lock')
+					createDynamoDB('henry-aws-deploy-jenkins-lock')
 				}
 			}
 		}
