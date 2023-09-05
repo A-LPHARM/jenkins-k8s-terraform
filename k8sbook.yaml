@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8sbook-deploy
+spec:
+  selector:
+    matchLabels:
+      app: k8sbook
+  template:
+    metadata:
+      labels:
+        app: k8sbook
+    spec:
+      containers:
+      - name: k8sbook
+        image: nigelpoulton/k8sbook:1.0
+        ports:
+        - containerPort: 8080
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8sbook-svc
+spec:
+  type: LoadBalancer
+  selector:
+    app: k8sbook
+  ports:
+  - port: 8080
+    targetPort: 8080
+
