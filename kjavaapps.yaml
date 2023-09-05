@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: javaapp
+spec:
+  selector:
+    matchLabels:
+      app: javaapp
+  template:
+    metadata:
+      labels:
+        app: javaapp
+    spec:
+      containers:
+      - name: javaapp
+        image: "${REPOSITORY_URL}:${BUILD_ID}"
+        ports:
+        - containerPort: 3000
+      imagePullSecrets:
+        - name: regcred
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: javaapp
+spec:
+  type: LoadBalancer
+  selector:
+    app: javaapp
+  ports:
+  - port: 3000
+    targetPort: 3000
