@@ -13,10 +13,6 @@ Under the "CREATE ENVIRONMENT" section, we set up AWS resources:
 - Create an AWS ECR repository using the `aws ecr create-repository` command.
 - Create an AWS S3 bucket using the `aws s3 mb` command.
 - Create an AWS DynamoDB table using the `aws dynamodb create-table` command.
-![Screenshot (70)](https://github.com/A-LPHARM/jenkins-k8s-terraform/assets/123018722/1e34e9af-c9e7-40ff-a108-dd3d97d8b156)
-![Screenshot (72)](https://github.com/A-LPHARM/jenkins-k8s-terraform/assets/123018722/bc6a86ad-8e5d-474e-a1cb-5c7684f2c300)
-![Screenshot (74)](https://github.com/A-LPHARM/jenkins-k8s-terraform/assets/123018722/3294d0cf-e667-446a-aff0-cc564a3d3749)
-
 **Step 3: AWS ECR Authentication**
 
 - Use AWS CLI commands to authenticate with AWS ECR from within our Jenkins pipeline script.
